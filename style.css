@@ -1,0 +1,176 @@
+
+
+
+/* https://timonwa.com/blog/all-vs-root-vs-html-vs-body-selectors */
+
+:root{
+    --couleurTextes:white;
+    --couleurTitres:grey;
+    --couleurFond:rgb(100,0,0);
+    --couleurBordures:rgb(50,0,0);
+    --couleurParagraphes :rgb(80,0,0);
+    --couleurHoverBouton : grey;
+    --couleurFenetres : grey;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 1px solid pink;
+    box-sizing: border-box;
+}
+
+html{
+    /* min-height: 100vh; */
+    /* min-width: 100vw; */
+    background-color: yellow;
+    /* background-color: var(--couleurFond); */
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    background-color: rgb(50,50,0);
+}
+
+
+#infosActeur{
+    position: absolute;
+    background-color: var(--couleurFenetres);
+    transition: right 2s, opacity 2s;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+.slide-in{
+    right:0%;
+}
+
+.slide-out{
+    right:-100%;
+}
+
+.animation-fade-in{
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes fade-in {
+    0%{opacity: 0};
+    100%{opacity: 1};
+}
+
+@keyframes fade-out {
+    0%{opacity: 1};
+    100%{opacity: 0};
+}
+
+#filmographie{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+}
+.photoFilmographie{
+    /* object-fit: contain; */
+    /* width: 100%; */
+}
+
+.bouton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    cursor: pointer;
+    border-radius: 20px;
+    color: beige;
+}
+.bouton:hover{
+    background-color:var(--couleurHoverBouton);
+}
+
+p{
+    color: var(--couleurTextes);
+    /* border-style: solid;
+    border-color: var(--couleurBordures);
+    background-color: var(--couleurParagraphes); */
+    /* width: 100%; */
+}
+li{
+    color: var(--couleurTextes);
+    list-style: none;
+    /* font-size: 30px; */
+}
+.information{
+    color: var(--couleurTitres);
+}
+span{
+    color: var(--couleurTextes);
+}
+
+
+
+i{
+    /* font-size: 80px; */
+    display: inline-block;
+}
+h1{
+    /* font-size: 80px; */
+    display: inline-block;
+}
+#presentationFilm{
+    /* width: 100%; */
+    display: flex;
+}
+#posterFilm{
+    height: 250px;
+    display: inline-block;
+    
+}
+#listeGenres{
+    /* width: 50%; */
+    display: inline-block;
+
+}
+
+figure {
+    display: inline-block;
+    text-align: center;
+    width : 100px;
+}
+figcaption{
+    color: var(--couleurTextes);
+    font-size: smaller;
+    /* text-align: center; */
+    font-style: italic;
+}
+.photoActeurs{
+    height: 5rem;
+}
+.photoActeurs:hover{
+    cursor: pointer;
+    opacity: 0.5;
+}
+#box-acteurs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+#container-btn-acteurs{
+
+    display: inline-block;
+    justify-content: space-around;
+}
+#boutonActeurSuivant, #boutonActeurPrecedent, #boutonRetour{
+    cursor: pointer;
+}
+#boutonActeurSuivant:hover, #boutonActeurPrecedent:hover, #boutonRetour:hover{
+    color:var(--couleurHoverBouton);
+}
