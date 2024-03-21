@@ -2,8 +2,8 @@
 const  titreFilm = document.querySelector('#titreFilm');
 const boutonFilmSuivant = document.querySelector('#boutonFilmSuivant');
 const boutonRechercherFilm = document.getElementById('boutonRechercherFilm');
-const boutonActeurSuivant = document.getElementById('boutonActeurSuivant');
-const boutonActeurPrecedent = document.getElementById('boutonActeurPrecedent');
+const btn_acteur_suivant = document.getElementById('btn_acteur_suivant');
+const btn_acteur_precedent = document.getElementById('btn_acteur_precedent');
 const boutonFilmographieSuivant = document.getElementById('boutonFilmographieSuivant');
 const boutonAfficher = document.getElementById('boutonAfficher');
 const boutonRetour = document.getElementById('boutonRetour');
@@ -218,13 +218,13 @@ boutonRechercherFilm.addEventListener('click', ()=>{
     requeteboutonRechercherFilm(filmRecherche);
 });
 
-boutonActeurSuivant.addEventListener('click',()=>{
+btn_acteur_suivant.addEventListener('click',()=>{
     idCasting++;
     ctrlIdCasting()
     afficherActeur(idCasting);
 });
 
-boutonActeurPrecedent.addEventListener('click',()=>{
+btn_acteur_precedent.addEventListener('click',()=>{
     idCasting--;
     ctrlIdCasting()
     afficherActeur(idCasting);
