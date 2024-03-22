@@ -1,11 +1,8 @@
-
 const  titreFilm = document.querySelector('#titreFilm');
-const boutonFilmSuivant = document.querySelector('#boutonFilmSuivant');
-const boutonRechercherFilm = document.getElementById('boutonRechercherFilm');
+const btn_rechercher = document.getElementById('btn_rechercher');
 const btn_acteur_suivant = document.getElementById('btn_acteur_suivant');
 const btn_acteur_precedent = document.getElementById('btn_acteur_precedent');
 const boutonFilmographieSuivant = document.getElementById('boutonFilmographieSuivant');
-const boutonAfficher = document.getElementById('boutonAfficher');
 const boutonRetour = document.getElementById('boutonRetour');
 const photoActeurs = document.querySelectorAll('.photoActeurs');
 const filmsActeur = document.getElementById('infosActeur');
@@ -134,10 +131,10 @@ function deux() {
 
 // -------------------------------------------------------------------------
 
-boutonAfficher.addEventListener('click',()=>{
-    alimenterListeFilms();
-    // afficher(filmsActeur);
-});
+// boutonAfficher.addEventListener('click',()=>{
+//     alimenterListeFilms();
+//     // afficher(filmsActeur);
+// });
 
 boutonRetour.addEventListener('click',()=>{
     masquer(filmsActeur);
@@ -201,35 +198,13 @@ boutonFilmographieSuivant.addEventListener("click", ()=>{
 
 // -------------------------------------------------------------------------
 
-boutonFilmSuivant.addEventListener("click", ()=>{
-    idFilm++;
-    appelerRequetes();
-});
 
-
-
-
-
-
-
-
-boutonRechercherFilm.addEventListener('click', ()=>{
+btn_rechercher.addEventListener('click', ()=>{
     const filmRecherche = document.getElementById('boiteDialogueFilmRecherche').value;
-    requeteboutonRechercherFilm(filmRecherche);
+    requetebtn_rechercher(filmRecherche);
 });
 
-btn_acteur_suivant.addEventListener('click',()=>{
-    idCasting++;
-    ctrlIdCasting()
-    afficherActeur(idCasting);
-});
 
-btn_acteur_precedent.addEventListener('click',()=>{
-    idCasting--;
-    ctrlIdCasting()
-    afficherActeur(idCasting);
-
-});
 
 
 photoActeurs.forEach((e)=>{
@@ -285,14 +260,60 @@ function requeterInfosActeur(id){
     });
 };
 
+'______________________________________________________________________________________________________'
+
+btn_acteur_suivant.addEventListener('click',()=>{
+    idCasting++;
+    ctrlIdCasting()
+    afficherActeur(idCasting);
+});
+
+btn_acteur_precedent.addEventListener('click',()=>{
+    idCasting--;
+    ctrlIdCasting()
+    afficherActeur(idCasting);
+
+});
+
 function ctrlIdCasting(){
 
-    if(idCasting>casting.length-5){
-        idCasting=casting.length-5;
+    if(idCasting>casting.length-photoActeurs.length){
+        idCasting=casting.length-photoActeurs.length;
     }else if(idCasting<0){
         idCasting=0;
     }
 }
+
+function requeterInfosCasting(){
+
+    fetch('https://api.themoviedb.org/3/movie/' + idFilm + '/credits?api_key=b642a2df5b6d3048d4f07cd2a377518c')
+    .then((response)=>{
+     
+            response.json()
+
+            .then((json)=>{
+
+                casting=json.cast;
+                idCasting=0;
+                afficherActeur(idCasting);
+                
+            });
+
+    })
+};
+
+
+
+function afficherActeur(x){
+
+    for (let i=x;i<=x+photoActeurs.length-1;i++){
+        document.getElementById('photoActeur' +(i-x + 1)).src = 'https://image.tmdb.org/t/p/w500/' + casting[i].profile_path;
+        document.getElementById('nomActeur' + (i-x + 1)).textContent = casting[i].name;
+    };
+
+};
+
+'______________________________________________________________________________________________________'
 
 function requeterInfosFilm(){
 
@@ -310,10 +331,10 @@ function requeterInfosFilm(){
 
                 const adresseImage1 = 'https://image.tmdb.org/t/p/w500/' + json.poster_path;
                 // console.log(adresseImage1);
-                document.getElementById('posterFilm').src = adresseImage1;
+                document.getElementById('img_film_avant').src = adresseImage1;
 
                 const adresseImage2 = 'https://image.tmdb.org/t/p/w500/' + json.backdrop_path;
-                document.getElementById('imageDeFondFilm').src = adresseImage2;
+                document.getElementById('img_film_arriere').src = adresseImage2;
 
                 document.getElementById('slogan').innerText= json.tagline;
                 document.getElementById('synopsis').innerText=json.overview;
@@ -332,11 +353,11 @@ function requeterInfosFilm(){
                 document.getElementById('siteOfficiel').innerText=json.homepage;
                 
                 const tableauGenres = json.genres;
-                listeGenres.innerHTML=``;
+                liste_genres.innerHTML=``;
 
                 tableauGenres.forEach(element => {
                     // console.log(element.name);
-                    genresFilm =document.querySelector("#listeGenres");
+                    genresFilm =document.querySelector("#liste_genres");
                     let li = document.createElement('li');
                     li.innerHTML = element.name;
                     genresFilm.append(li);
@@ -353,46 +374,7 @@ function requeterInfosFilm(){
     });
 };
 
-function requeterInfosCasting(){
-
-    fetch('https://api.themoviedb.org/3/movie/' + idFilm + '/credits?api_key=b642a2df5b6d3048d4f07cd2a377518c')
-    .then((response)=>{
-        // console.log(response)
-        // if (response.status==200){
-                    
-            response.json()
-
-            .then((json)=>{
-                // console.log(json)
-                casting=json.cast;
-                // console.log(casting);
-                // const adresseImage1 = 'https://image.tmdb.org/t/p/w500/' + json.cast[0].profile_path;
-                // console.log(adresseImage1);
-                idCasting=0;
-                afficherActeur(idCasting);
-                
-            });
-        // }else{
-        //     idFilm++;
-        //     appelerRequetes();
-        // }
-
-    })
-};
-
-function afficherActeur(x){
-
-    // console.log('Id casting : ' + x);
-    // console.log('Longueur casting : ' + casting.length);
-
-    for (let i=x;i<=x+4;i++){
-        document.getElementById('photoActeur' +(i-x)).src = 'https://image.tmdb.org/t/p/w500/' + casting[i].profile_path;
-        document.getElementById('nomActeur' + (i-x)).textContent = casting[i].name;
-    };
-
-};
-
-function requeteboutonRechercherFilm(filmRecherche){
+function requetebtn_rechercher(filmRecherche){
     // console.log ('Film recherché : ' + filmRecherche)
     fetch('https://api.themoviedb.org/3/search/movie?api_key=b642a2df5b6d3048d4f07cd2a377518c&query=' + filmRecherche + '&include_adult=false&language=en-US&page=1')
     .then ((response)=>{

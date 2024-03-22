@@ -9,35 +9,57 @@
     --couleurFond:rgb(100,0,0);
     --couleurBordures:rgb(50,0,0);
     --couleurParagraphes :rgb(80,0,0);
+    --couleurBouton :black;
     --couleurHoverBouton : grey;
     --couleurFenetres : grey;
+}
+
+i{
+    color: var(--couleurBouton);
 }
 
 *{
     margin: 0;
     padding: 0;
-    border: 1px solid pink;
+    /* border: 1px solid grey; */
     box-sizing: border-box;
 }
 
 html{
-
-    background-color: pink;
-    /* background-color: var(--couleurFond); */
+    font-size: 62.5%;
+    background-color: var(--couleurBordures);
 }
 
 body{
-    background-color: red;
+    background-color: var(--couleurFond);
 }
 
 header{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1em;
 }
 
 
+#ctner_recherche{
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: start;
+    padding: 1rem;
+    margin-bottom: 1em;
+}
 
+
+#ctner_recherche input{
+    height: 3rem;
+    width: 90%;
+    margin-right: 0.5rem;
+    text-align: start;
+    padding: 1rem;
+    font-size: 2rem;
+}
 
 #infosActeur{
     position: absolute;
@@ -95,17 +117,18 @@ header{
 
 p{
     color: var(--couleurTextes);
-    /* border-style: solid;
+    border-style: solid;
     border-color: var(--couleurBordures);
-    background-color: var(--couleurParagraphes); */
-    /* width: 100%; */
+    background-color: var(--couleurParagraphes);
+    margin: 5px;;
+
 }
 li{
     color: var(--couleurTextes);
     list-style: none;
-    /* font-size: 30px; */
+    font-size: 2rem;
 }
-.information{
+.infos_film{
     color: var(--couleurTitres);
 }
 span{
@@ -113,34 +136,54 @@ span{
 }
 
 
-
-i{
-    /* font-size: 80px; */
-    display: inline-block;
-}
 h1{
-    /* font-size: 80px; */
-    display: inline-block;
+
+    font-size:3rem;
 }
-#presentationFilm{
-    /* width: 100%; */
+
+/* __________________________________________________________ */
+
+
+
+#ctner_presentation_film{
     display: flex;
+    background-color: var(--couleurParagraphes);
+    padding: 1em;
+    margin-bottom: 1em;
 }
-#posterFilm{
-    height: 250px;
-    display: inline-block;
+
+.ctner_img_film{
+    height: 15rem;
     
 }
-#listeGenres{
-    /* width: 50%; */
-    display: inline-block;
+
+#ctner_img_film_avant{
+    width: 50%;
+}
+
+#ctner_img_film_arriere{
 
 }
+
+.ctner_img_film img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+#liste_genres{
+    width: 50%;
+
+}
+
+/* __________________________________________________________ */
+
 
 figure {
     display: inline-block;
     text-align: center;
-    width : 100px;
+    width : 10rem;
+    background-color: var(--couleurParagraphes);
 }
 figcaption{
     color: var(--couleurTextes);
@@ -149,7 +192,7 @@ figcaption{
     font-style: italic;
 }
 .photoActeurs{
-    height: 5rem;
+    height: 8rem;
 }
 
 #box-acteurs{
@@ -158,42 +201,32 @@ figcaption{
     gap: 2rem;
     justify-content: center;
 }
-#container_btn_acteurs{
+#ctner_btn_acteurs{
     display: flex;
     position: relative;
-    height: fit-content;
     width: 100%;
-    height: 50px;
+    height: 5rem;
     align-items: center;
 
 }
 
 #btn_acteur_precedent{
     position : absolute;
-    left: 10px;
+    left: 1rem;
 }
 
 #btn_acteur_suivant{
     position: absolute;
-    right:10px;
+    right:1rem;
 }
-.btn{
-    /* height: 100%; */
-}
-    
-
-
 
 @media(hover:hover){
     /* taget device that can hover */
     
-    #btn_acteur_suivant:hover, #btn_acteur_precedent:hover, #boutonRetour:hover{
+    .btn:hover{
         color:var(--couleurHoverBouton);
     }
-    .bouton:hover{
-        background-color:var(--couleurHoverBouton);
-    }
-    
+
     .photoActeurs:hover{
         cursor: pointer;
         opacity: 0.5;
@@ -209,7 +242,7 @@ figcaption{
 @media(pointer:fine){
     /* mouse*/
 
-    #btn_acteur_suivant, #btn_acteur_precedent, #boutonRetour{
+    .btn{
         cursor: pointer;
     }
 
