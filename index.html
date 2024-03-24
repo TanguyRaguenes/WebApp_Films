@@ -17,7 +17,7 @@
 <body>
 
     <div id="ctner_recherche">
-        <input id="boiteDialogueFilmRecherche" type="text" placeholder="Recherche" autocomplete="off" list="listeFilms">
+        <input id="input_recherche" type="text" placeholder="Recherche" list="listeFilms">
         <i class="fa-solid fa-magnifying-glass fa-3x btn" id="btn_rechercher" ></i>
     </div>
 
@@ -26,62 +26,45 @@
         <h1 id="titreFilm">Titre film</h1>
     </header>
 
-    <section id="infosActeur" class="slide-out" style="display: none;">
-        <i id="boutonRetour" class="fa-solid fa-caret-left"></i>
-        <br/>
-        <div id="filmographie">
+    <section id="ctner_infos_acteur" class="slide-out">
+        <!-- style="display: none;" -->
+
+        <div id="ctner_btn_infos_acteur">
+            <i id="btn_retour" class="fa-solid fa-circle-left fa-3x btn"></i>
+            <i id="btn_films_precedents" class="fa-solid fa-caret-left fa-3x btn"></i>
+            <i id="btn_films_suivants" class="fa-solid fa-caret-right fa-3x btn"></i>
+        </div>
+
+        <div id="ctner_filmographie">
+
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie0"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie0" onerror="this.src = ''">
                 <figcaption id="titreFilmographie0"> Your text </figcaption>
             </figure>
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie1"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie1" onerror="this.src = ''">
                 <figcaption id="titreFilmographie1"> Your text </figcaption>
             </figure>
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie2"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie2" onerror="this.src = ''">
                 <figcaption id="titreFilmographie2"> Your text </figcaption>
             </figure>
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie3"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie3" onerror="this.src = ''">
                 <figcaption id="titreFilmographie3"> Your text </figcaption>
             </figure>
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie4"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie4" onerror="this.src = ''">
                 <figcaption id="titreFilmographie4"> Your text </figcaption>
             </figure>
             <figure>
-                <img class = "photoFilmographie" id="photoFilmographie5"  src="noImageAvailable..png">
+                <img class = "photoFilmographie" id="photoFilmographie5" onerror="this.src = ''">
                 <figcaption id="titreFilmographie5"> Your text </figcaption>
             </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie6"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie6"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie7"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie7"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie8"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie8"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie9"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie9"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie10"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie10"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie11"  src="noImageAvailable..png">
-                <figcaption id="titreFilmographie11"> Your text </figcaption>
-            </figure>
+
 
         </div>
-        <br/>
-        <div id="boutonFilmographieSuivant" class="bouton">Suivant</div>
+
     </section>
 
    
@@ -104,42 +87,42 @@
 
         <div id="ctner_btn_acteurs">
 
-            <i class="fa-solid fa-chevron-left fa-3x btn" id="btn_acteur_precedent"></i>
+            <i class="fa-solid fa-chevron-left fa-3x btn" id="btn_acteurs_precedents"></i>
 
-            <i class="fa-solid fa-chevron-right fa-3x btn" id="btn_acteur_suivant"></i>
+            <i class="fa-solid fa-chevron-right fa-3x btn" id="btn_acteurs_suivants"></i>
 
         </div>
 
-        <div id="box-acteurs">
+        <div id="ctner_acteurs">
 
             <figure>
-                <img id="photoActeur1"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
+                <img id="photoActeur0"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
+                <figcaption id="nomActeur0"> Your text </figcaption>
+            </figure>
+
+            <figure>
+                <img id="photoActeur1"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
                 <figcaption id="nomActeur1"> Your text </figcaption>
             </figure>
     
             <figure>
-                <img id="photoActeur2"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
+                <img id="photoActeur2"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
                 <figcaption id="nomActeur2"> Your text </figcaption>
             </figure>
     
             <figure>
-                <img id="photoActeur3"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
+                <img id="photoActeur3"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
                 <figcaption id="nomActeur3"> Your text </figcaption>
             </figure>
     
             <figure>
-                <img id="photoActeur4"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
+                <img id="photoActeur4"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
                 <figcaption id="nomActeur4"> Your text </figcaption>
             </figure>
 
             <figure>
-                <img id="photoActeur5"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
+                <img id="photoActeur5"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
                 <figcaption id="nomActeur5"> Your text </figcaption>
-            </figure>
-
-            <figure>
-                <img id="photoActeur6"  class="photoActeurs" src="noImageAvailable..png" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur6"> Your text </figcaption>
             </figure>
 
         </div>
@@ -173,7 +156,7 @@
     </section>
 
     <footer>
-
+        <a href="https://www.dropbox.com/scl/fi/4vubi002c6o5bbt36a727/NutriTracker.apk?rlkey=l8nnff6wq8qtdv5oox3753qfc&dl=0" target="_blank">Link to download NutriTracker</a>
     </footer>
 
 </body>

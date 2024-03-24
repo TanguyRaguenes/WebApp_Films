@@ -1,7 +1,6 @@
 
 
-
-/* https://timonwa.com/blog/all-vs-root-vs-html-vs-body-selectors */
+/* ______________________________________________________________________ */
 
 :root{
     --couleurTextes:white;
@@ -12,10 +11,6 @@
     --couleurBouton :black;
     --couleurHoverBouton : grey;
     --couleurFenetres : grey;
-}
-
-i{
-    color: var(--couleurBouton);
 }
 
 *{
@@ -30,9 +25,8 @@ html{
     background-color: var(--couleurBordures);
 }
 
-body{
-    background-color: var(--couleurFond);
-}
+/* ______________________________________________________________________ */
+
 
 header{
     display: flex;
@@ -41,32 +35,53 @@ header{
     margin-bottom: 1em;
 }
 
-
-#ctner_recherche{
-    display: flex;
-    height: 5rem;
-    align-items: center;
-    justify-content: start;
-    padding: 1rem;
-    margin-bottom: 1em;
+body{
+    background-color: var(--couleurFond);
 }
 
+p{
+    color: var(--couleurTextes);
+    border-style: solid;
+    border-color: var(--couleurBordures);
+    background-color: var(--couleurParagraphes);
+    margin: 5px;;
 
-#ctner_recherche input{
-    height: 3rem;
-    width: 90%;
-    margin-right: 0.5rem;
-    text-align: start;
-    padding: 1rem;
+}
+
+li{
+    color: var(--couleurTextes);
+    list-style: none;
     font-size: 2rem;
 }
 
-#infosActeur{
-    position: absolute;
-    background-color: var(--couleurFenetres);
-    transition: right 2s, opacity 2s;
-    animation: name duration timing-function delay iteration-count direction fill-mode;
+i{
+    color: var(--couleurBouton);
 }
+
+
+span{
+    color: var(--couleurTextes);
+}
+
+
+h1{
+
+    font-size:3rem;
+}
+
+figure {
+    display: inline-block;
+    text-align: center;
+    background-color: var(--couleurParagraphes);
+}
+figcaption{
+    color: var(--couleurTextes);
+    font-size: smaller;
+    /* text-align: center; */
+    font-style: italic;
+}
+
+/* ______________________________________________________________________ */
 
 .slide-in{
     right:0%;
@@ -83,6 +98,122 @@ header{
     animation-timing-function: ease-in-out;
 }
 
+.infos_film{
+    color: var(--couleurTitres);
+}
+
+.ctner_img_film{
+    height: 15rem;
+    
+}
+
+.ctner_img_film img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.photoActeurs{
+    height: 8rem;
+}
+
+/* ______________________________________________________________________ */
+
+#ctner_recherche{
+    display: flex;
+    height: 5rem;
+    align-items: center;
+    justify-content: start;
+    padding: 1rem;
+    margin-bottom: 1em;
+}
+
+#ctner_recherche input{
+    height: 3rem;
+    width: 90%;
+    margin-right: 0.5rem;
+    text-align: start;
+    padding: 1rem;
+    font-size: 2rem;
+}
+
+#ctner_infos_acteur{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: right 2s;
+    background-color: var(--couleurFond)
+}
+
+#ctner_infos_acteur figure{
+    width : 15rem;
+    min-height: 5rem;
+}
+
+#ctner_filmographie{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#ctner_filmographie img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    background-color: var(--couleurParagraphes);
+}
+
+
+#ctner_acteurs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+#ctner_acteurs figure{
+    width : 10rem;
+    margin: auto;
+}
+
+#ctner_btn_acteurs, #ctner_btn_infos_acteur#{
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    align-items: center;
+
+}
+
+#btn_acteurs_precedents{
+
+    left: 1rem;
+}
+
+#btn_acteurs_suivants{
+
+    right:1rem;
+}
+
+#ctner_presentation_film{
+    display: flex;
+    background-color: var(--couleurParagraphes);
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+#ctner_img_film_avant{
+    width: 50%;
+}
+
+#liste_genres{
+    width: 50%;
+
+}
+
+/* ______________________________________________________________________ */
+
 @keyframes fade-in {
     0%{opacity: 0};
     100%{opacity: 1};
@@ -93,132 +224,7 @@ header{
     100%{opacity: 0};
 }
 
-#filmographie{
-    /* display: flex; */
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-}
-.photoFilmographie{
-    /* object-fit: contain; */
-    /* width: 100%; */
-}
-
-.bouton{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100px;
-    height: 50px;
-    background-color: black;
-    cursor: pointer;
-    border-radius: 20px;
-    color: beige;
-}
-
-p{
-    color: var(--couleurTextes);
-    border-style: solid;
-    border-color: var(--couleurBordures);
-    background-color: var(--couleurParagraphes);
-    margin: 5px;;
-
-}
-li{
-    color: var(--couleurTextes);
-    list-style: none;
-    font-size: 2rem;
-}
-.infos_film{
-    color: var(--couleurTitres);
-}
-span{
-    color: var(--couleurTextes);
-}
-
-
-h1{
-
-    font-size:3rem;
-}
-
-/* __________________________________________________________ */
-
-
-
-#ctner_presentation_film{
-    display: flex;
-    background-color: var(--couleurParagraphes);
-    padding: 1em;
-    margin-bottom: 1em;
-}
-
-.ctner_img_film{
-    height: 15rem;
-    
-}
-
-#ctner_img_film_avant{
-    width: 50%;
-}
-
-#ctner_img_film_arriere{
-
-}
-
-.ctner_img_film img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
-
-#liste_genres{
-    width: 50%;
-
-}
-
-/* __________________________________________________________ */
-
-
-figure {
-    display: inline-block;
-    text-align: center;
-    width : 10rem;
-    background-color: var(--couleurParagraphes);
-}
-figcaption{
-    color: var(--couleurTextes);
-    font-size: smaller;
-    /* text-align: center; */
-    font-style: italic;
-}
-.photoActeurs{
-    height: 8rem;
-}
-
-#box-acteurs{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-#ctner_btn_acteurs{
-    display: flex;
-    position: relative;
-    width: 100%;
-    height: 5rem;
-    align-items: center;
-
-}
-
-#btn_acteur_precedent{
-    position : absolute;
-    left: 1rem;
-}
-
-#btn_acteur_suivant{
-    position: absolute;
-    right:1rem;
-}
+/* ______________________________________________________________________ */
 
 @media(hover:hover){
     /* taget device that can hover */
