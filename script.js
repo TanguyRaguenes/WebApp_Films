@@ -12,7 +12,9 @@ const btn_films_suivants = document.getElementById('btn_films_suivants');
 const photoActeurs = document.querySelectorAll('.photoActeurs');
 const photoFilmographie = document.querySelectorAll('.photoFilmographie');
 
-const ctner_infos_acteur = document.getElementById('ctner_infos_acteur');
+const ctner_détails_acteur = document.getElementById('ctner_détails_acteur');
+
+const input_recherche = document.getElementById('input_recherche');
 
 let casting=[];
 let filmographieActeur=[];
@@ -20,9 +22,14 @@ let filmographieActeur=[];
 let idCasting = 0;
 let idFilmographie = 0;
 
-let idFilm = 385687;
+let idFilm = 157336;
 
 let titresFilms =[];
+
+
+input_recherche.addEventListener('click',()=>{
+    input_recherche.value="";
+})
 
 
 // FILMOGRAPHIE'______________________________________________________________________________________________________'
@@ -43,21 +50,6 @@ btn_films_precedents.addEventListener("click", ()=>{
     afficherFilmographie();
     
 });
-
-// btn_acteurs_suivants.addEventListener('click',()=>{
-//     idCasting+=5;
-    
-//     ctrlIdCasting()
-//     afficherActeur(idCasting);
-// });
-
-// btn_acteurs_precedents.addEventListener('click',()=>{
-//     idCasting-=5;
-
-//     ctrlIdCasting()
-//     afficherActeur(idCasting);
-
-// });
 
 function ctrlIdFilmographie(){
     if(idFilmographie+5>filmographieActeur.length){
@@ -83,7 +75,6 @@ function requeterInfosActeur(id){
         .then((json)=>{
 
             filmographieActeur=json.cast;
-            console.log(filmographieActeur);
             filmographieActeur.sort(function trie(a,b){
 
                 if (a.release_date ==""){
@@ -110,23 +101,37 @@ function requeterInfosActeur(id){
 
 function afficherFilmographie(){
 
+    console.log(filmographieActeur);
+    console.log(filmographieActeur.length);
+
     for (let i=0 ;i<=photoFilmographie.length-1 ;i++){
 
-        const adresseImage = 'https://image.tmdb.org/t/p/w500/' + filmographieActeur[idFilmographie+i].backdrop_path;
-        const titreFilm = filmographieActeur[idFilmographie+i].original_title + "_" + filmographieActeur[idFilmographie+i].release_date;
-    
-        document.getElementById('photoFilmographie'+i).src = adresseImage;
-        document.getElementById('titreFilmographie'+i).textContent = titreFilm;
+        document.getElementById('photoFilmographie'+i).src ="no_img_found_2.png"
+        document.getElementById('titreFilmographie'+i).textContent = "_";
+        
+
+        try{
+            const adresseImage = 'https://image.tmdb.org/t/p/w500/' + filmographieActeur[idFilmographie+i].backdrop_path;
+            const titreFilm = filmographieActeur[idFilmographie+i].original_title + "_" + filmographieActeur[idFilmographie+i].release_date;
+        
+
+            document.getElementById('photoFilmographie'+i).src = adresseImage;
+            document.getElementById('titreFilmographie'+i).textContent = titreFilm;
+        }
+        catch(e){
+            console.log("Erreur_afficherFilmographie : " + e)
+        }
+
     }
 
-    ctner_infos_acteur.classList.remove('slide-out');
-    ctner_infos_acteur.classList.add('slide-in');
+    ctner_détails_acteur.classList.remove('slide-out');
+    ctner_détails_acteur.classList.add('slide-in');
     
 }
 
 btn_retour.addEventListener('click',()=>{
-    ctner_infos_acteur.classList.remove('slide-in');
-    ctner_infos_acteur.classList.add('slide-out');
+    ctner_détails_acteur.classList.remove('slide-in');
+    ctner_détails_acteur.classList.add('slide-out');
 });
 
 
@@ -137,42 +142,11 @@ fetch('https://api.themoviedb.org/3/movie/popular?api_key=b642a2df5b6d3048d4f07c
 .then((response)=>{
     response.json()
     .then((json)=>{
-        const nbPages = json.total_pages;
-        alimenterListeFilms ();
+
     })
 });
 
-function alimenterListeFilms() {
-    titresFilms = [];
-    une().then(deux);
-}
 
-function une() {
-
-    return new Promise((resolve, reject) => {
-        let tableauDePromesses = [];
-        for (let i = 1; i <= 10; i++) {
-            tableauDePromesses.push(fetch('https://api.themoviedb.org/3/movie/popular?api_key=b642a2df5b6d3048d4f07cd2a377518c&language=en-US&page=' + i)
-                .then(response => response.json())
-                .then(json => {
-                    let films = json.results;
-                    films.forEach(element => titresFilms.push(element.original_title));
-                })
-            );
-        }
-        // fetch créé une promesse à chaque fois que l'on stocke dans un tableau
-        Promise.all(tableauDePromesses).then(resolve).catch(reject);
-    });
-}
-
-function deux() {
-    const listeFilms = document.getElementById('listeFilms');
-    titresFilms.forEach(e => {
-        const option = document.createElement('option');
-        option.value = e;
-        listeFilms.appendChild(option);
-    });
-}
 
 // RECHERCHE FILM'______________________________________________________________________________________________________'
 
@@ -189,13 +163,13 @@ function requetebtn_rechercher(filmRecherche){
         response.json()
         .then((json)=>{
             idFilm = json.results[0].id;
+            console.log(idFilm);
             appelerRequetes();
         })
     })
 
 
 };
-
 
 
 // ACTEURS'______________________________________________________________________________________________________'
@@ -226,8 +200,14 @@ function ctrlIdCasting(){
 function afficherActeur(x){
 
     for (let i=x;i<=x+photoActeurs.length-1;i++){
-        document.getElementById('photoActeur' +(i-x)).src = 'https://image.tmdb.org/t/p/w500/' + casting[i].profile_path;
-        document.getElementById('nomActeur' + (i-x)).textContent = casting[i].name;
+        try{
+            document.getElementById('photoActeur' +(i-x)).src = 'https://image.tmdb.org/t/p/w500/' + casting[i].profile_path;
+            document.getElementById('nomActeur' + (i-x)).textContent = casting[i].name;
+        }
+        catch(e){
+            console.log("Erreur_afficherActeur : " + e)
+        }
+
     };
 
 };
@@ -273,14 +253,14 @@ function requeterInfosFilm(){
 
                 document.getElementById('slogan').innerText= json.tagline;
                 document.getElementById('synopsis').innerText=json.overview;
-                document.getElementById('budget').innerText=json.budget.toLocaleString();
-                document.getElementById('gains').innerText=json.revenue.toLocaleString();
+                document.getElementById('budget').innerText=json.budget.toLocaleString() + "€";
+                document.getElementById('gains').innerText=json.revenue.toLocaleString() + "€";
                 document.getElementById('popularite').innerText=json.popularity;
-                document.getElementById('note').innerText=Math.round(json.vote_average*100)/100;
+                document.getElementById('note').innerText=Math.round(json.vote_average*100)/100 +"/10";
                 document.getElementById('nombreVotes').innerText=json.vote_count.toLocaleString();
                 const dateBonFormat = json.release_date.substring(8,10)+"/"+ json.release_date.substring(5,7)+"/"+ json.release_date.substring(0,4)
                 document.getElementById('dateSortie').innerText=dateBonFormat ;
-                document.getElementById('duree').innerText=json.runtime;
+                document.getElementById('duree').innerText=json.runtime + " minutes";
                 document.getElementById('siteOfficiel').innerText=json.homepage;
                 
                 const tableauGenres = json.genres;

@@ -3,14 +3,17 @@
 /* ______________________________________________________________________ */
 
 :root{
-    --couleurTextes:white;
-    --couleurTitres:grey;
-    --couleurFond:rgb(100,0,0);
-    --couleurBordures:rgb(50,0,0);
-    --couleurParagraphes :rgb(80,0,0);
-    --couleurBouton :black;
-    --couleurHoverBouton : grey;
-    --couleurFenetres : grey;
+
+    --couleurFond:#FFFCFC;
+    
+    --couleurTitres:#641723;
+    --couleurTextes:#CE2C31;
+    
+    --couleurBordures:#FDBDBE;
+    --couleurParagraphes :#FFF7F7;
+
+    --couleurBouton :#E5484D;
+    --couleurHoverBouton : #DC3E42;
 }
 
 *{
@@ -22,17 +25,14 @@
 
 html{
     font-size: 62.5%;
-    background-color: var(--couleurBordures);
+    background-color: var(--couleurFond);
 }
 
 /* ______________________________________________________________________ */
 
 
 header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1em;
+    text-align: center;
 }
 
 body{
@@ -41,17 +41,21 @@ body{
 
 p{
     color: var(--couleurTextes);
-    border-style: solid;
-    border-color: var(--couleurBordures);
     background-color: var(--couleurParagraphes);
-    margin: 5px;;
+    margin: 0.5rem;
+    padding: 0.5rem;
 
+}
+
+span{
+    color: var(--couleurTextes);
 }
 
 li{
     color: var(--couleurTextes);
     list-style: none;
     font-size: 2rem;
+    margin-left: 2rem;
 }
 
 i{
@@ -59,14 +63,10 @@ i{
 }
 
 
-span{
-    color: var(--couleurTextes);
-}
-
-
 h1{
 
-    font-size:3rem;
+    font-size:4rem;
+    color: var(--couleurTitres);
 }
 
 figure {
@@ -76,9 +76,16 @@ figure {
 }
 figcaption{
     color: var(--couleurTextes);
-    font-size: smaller;
-    /* text-align: center; */
+    font-size: 1rem;
     font-style: italic;
+}
+
+footer{
+    text-align: center;
+}
+
+footer a{
+    font-size: 1rem;
 }
 
 /* ______________________________________________________________________ */
@@ -102,19 +109,24 @@ figcaption{
     color: var(--couleurTitres);
 }
 
-.ctner_img_film{
-    height: 15rem;
-    
-}
 
-.ctner_img_film img{
+.img_film{
     height: 100%;
-    width: 100%;
+    /* width: 100%; */
     object-fit: contain;
 }
 
 .photoActeurs{
     height: 8rem;
+}
+
+.ctner_btn_filmographie{
+    position: relative;
+    display: flex;
+    margin: 1rem;
+    height: 5%;
+    justify-content: center;
+    align-items: center;
 }
 
 /* ______________________________________________________________________ */
@@ -125,91 +137,111 @@ figcaption{
     align-items: center;
     justify-content: start;
     padding: 1rem;
-    margin-bottom: 1em;
+    margin : 1rem;
 }
 
 #ctner_recherche input{
     height: 3rem;
     width: 90%;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     text-align: start;
     padding: 1rem;
-    font-size: 2rem;
-}
-
-#ctner_infos_acteur{
-    position: fixed;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    transition: right 2s;
-    background-color: var(--couleurFond)
-}
-
-#ctner_infos_acteur figure{
-    width : 15rem;
-    min-height: 5rem;
-}
-
-#ctner_filmographie{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-}
-
-#ctner_filmographie img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    background-color: var(--couleurParagraphes);
-}
-
-
-#ctner_acteurs{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-#ctner_acteurs figure{
-    width : 10rem;
-    margin: auto;
-}
-
-#ctner_btn_acteurs, #ctner_btn_infos_acteur#{
-    display: flex;
-    width: 100%;
-    height: 5rem;
-    align-items: center;
-
-}
-
-#btn_acteurs_precedents{
-
-    left: 1rem;
-}
-
-#btn_acteurs_suivants{
-
-    right:1rem;
+    font-size: 1.5rem;
 }
 
 #ctner_presentation_film{
     display: flex;
     background-color: var(--couleurParagraphes);
-    padding: 1em;
-    margin-bottom: 1em;
+    padding: 1rem;
+    margin: 1rem;
+    border : 1px solid var(--couleurBordures);
+    height: 15rem;
+    align-items: center;
+    justify-content: center;
 }
 
-#ctner_img_film_avant{
-    width: 50%;
+#ctner_img_film{
+    height: 20rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
 }
 
-#liste_genres{
-    width: 50%;
+#ctner_infos_film{
+    border : 1px solid var(--couleurBordures);
+    padding: 1rem;
+    margin: 1rem;
+}
 
+/* DETAILS ACTEUR*/
+
+#ctner_détails_acteur{
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: right 1s ease-in-out;
+    background-color: var(--couleurFond);
+}
+
+#ctner_filmographie_acteur{
+    display: flex;
+    flex-wrap: wrap;
+    top : 0;
+    height: 85%;
+    background-color: var(--couleurParagraphes);
+    border: 1px solid var(--couleurBordures);
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    margin: 1em;
+}
+
+#ctner_filmographie_acteur figure{
+    width: 45%;
+    height: 25%;
+    margin: auto;
+    background-color: var(--couleurParagraphes);
+}
+
+#ctner_filmographie_acteur img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+#btn_films_precedents{
+    position: absolute;
+    left: 0;
+}
+
+#btn_films_suivants{
+    position: absolute;
+    right: 0;
+}
+
+/* ACTEURS*/
+
+#ctner_acteurs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+#ctner_photos_acteurs{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+#ctner_photos_acteurs figure{
+    width : 10rem;
+    height : 10rem;
+    margin: auto;
 }
 
 /* ______________________________________________________________________ */

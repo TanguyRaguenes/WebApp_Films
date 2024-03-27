@@ -17,54 +17,60 @@
 <body>
 
     <div id="ctner_recherche">
-        <input id="input_recherche" type="text" placeholder="Recherche" list="listeFilms">
+        <input id="input_recherche" type="text" placeholder="Recherche" list="listeFilms" autocomplete="off">
         <i class="fa-solid fa-magnifying-glass fa-3x btn" id="btn_rechercher" ></i>
     </div>
 
     <header>
-        <i class="fa-solid fa-clapperboard fa-3x"></i>
+        <!-- <i class="fa-solid fa-clapperboard fa-4x"></i> -->
         <h1 id="titreFilm">Titre film</h1>
     </header>
 
-    <section id="ctner_infos_acteur" class="slide-out">
-        <!-- style="display: none;" -->
+    <section id="ctner_détails_acteur" class="slide-out">
 
-        <div id="ctner_btn_infos_acteur">
+        <div class="ctner_btn_filmographie">
+
+            <i id="btn_films_precedents" class="fa-solid fa-caret-left fa-4x btn"></i>
+
+            <i id="btn_films_suivants" class="fa-solid fa-caret-right fa-4x btn"></i>
+
+        </div>
+
+
+        <div id="ctner_filmographie_acteur">
+
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie0" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie0"> _ </figcaption>
+            </figure>
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie1" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie1"> _ </figcaption>
+            </figure>
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie2" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie2"> _</figcaption>
+            </figure>
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie3" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie3"> _ </figcaption>
+            </figure>
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie4" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie4"> _ </figcaption>
+            </figure>
+            <figure>
+                <img class = "photoFilmographie" id="photoFilmographie5" onerror="this.src = 'no_img_found_2.png'">
+                <figcaption id="titreFilmographie5"> _ </figcaption>
+            </figure>
+
+        </div>
+
+        <div class="ctner_btn_filmographie">
             <i id="btn_retour" class="fa-solid fa-circle-left fa-3x btn"></i>
-            <i id="btn_films_precedents" class="fa-solid fa-caret-left fa-3x btn"></i>
-            <i id="btn_films_suivants" class="fa-solid fa-caret-right fa-3x btn"></i>
         </div>
-
-        <div id="ctner_filmographie">
-
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie0" onerror="this.src = ''">
-                <figcaption id="titreFilmographie0"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie1" onerror="this.src = ''">
-                <figcaption id="titreFilmographie1"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie2" onerror="this.src = ''">
-                <figcaption id="titreFilmographie2"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie3" onerror="this.src = ''">
-                <figcaption id="titreFilmographie3"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie4" onerror="this.src = ''">
-                <figcaption id="titreFilmographie4"> Your text </figcaption>
-            </figure>
-            <figure>
-                <img class = "photoFilmographie" id="photoFilmographie5" onerror="this.src = ''">
-                <figcaption id="titreFilmographie5"> Your text </figcaption>
-            </figure>
-
-
-        </div>
-
+        
+        
     </section>
 
    
@@ -72,84 +78,83 @@
     <section>
 
         <div id="ctner_presentation_film">
-            <div class="ctner_img_film" id="ctner_img_film_avant">
-                <img class="img_film" id="img_film_avant" onerror="this.src = 'no_img_found.png'">
-                <!-- onerror="this.src = 'noImageAvailable..png'" -->
 
-            </div>
+            <img class="img_film" id="img_film_avant" onerror="this.src = 'no_img_found_1.png'">
             <ul id="liste_genres">
                 <li>Item</li>
             </ul>
-        </div>
-
-
-
-
-        <div id="ctner_btn_acteurs">
-
-            <i class="fa-solid fa-chevron-left fa-3x btn" id="btn_acteurs_precedents"></i>
-
-            <i class="fa-solid fa-chevron-right fa-3x btn" id="btn_acteurs_suivants"></i>
 
         </div>
 
         <div id="ctner_acteurs">
 
-            <figure>
-                <img id="photoActeur0"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur0"> Your text </figcaption>
-            </figure>
+            <i class="fa-solid fa-chevron-left fa-4x btn" id="btn_acteurs_precedents"></i>
 
-            <figure>
-                <img id="photoActeur1"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur1"> Your text </figcaption>
-            </figure>
-    
-            <figure>
-                <img id="photoActeur2"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur2"> Your text </figcaption>
-            </figure>
-    
-            <figure>
-                <img id="photoActeur3"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur3"> Your text </figcaption>
-            </figure>
-    
-            <figure>
-                <img id="photoActeur4"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur4"> Your text </figcaption>
-            </figure>
+            <div id="ctner_photos_acteurs">
 
-            <figure>
-                <img id="photoActeur5"  class="photoActeurs" onerror="this.src = 'no_img_found.png'">
-                <figcaption id="nomActeur5"> Your text </figcaption>
-            </figure>
+                <figure>
+                    <img id="photoActeur0"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur0"> Your text </figcaption>
+                </figure>
+    
+                <figure>
+                    <img id="photoActeur1"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur1"> Your text </figcaption>
+                </figure>
+        
+                <figure>
+                    <img id="photoActeur2"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur2"> Your text </figcaption>
+                </figure>
+        
+                <figure>
+                    <img id="photoActeur3"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur3"> Your text </figcaption>
+                </figure>
+        
+                <figure>
+                    <img id="photoActeur4"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur4"> Your text </figcaption>
+                </figure>
+    
+                <figure>
+                    <img id="photoActeur5"  class="photoActeurs" onerror="this.src = 'no_img_found_1.png'">
+                    <figcaption id="nomActeur5"> Your text </figcaption>
+                </figure>
+    
+            </div>
+
+            <i class="fa-solid fa-chevron-right fa-4x btn" id="btn_acteurs_suivants"></i>
 
         </div>
 
+        
+
         <datalist id="listeFilms">
-            <option value="Exendable"></option>
-            <option value="Warcraft"></option>
+            <option value="Damsel"></option>
             <option value="Interstellar"></option>
+            <option value="Kung Fu Panda 3"></option>
+            <option value="The Expendables"></option>
+            <option value="Warcraft"></option>
         </datalist>
         
         
         <div id="ctner_infos_film">
             <p class="infos_film">Slogan : <span id="slogan"></span></p>
             <p class="infos_film">Synopsis : <span id="synopsis"></span></p>
-            <p class="infos_film">Budget : <span id="budget"></span> €</p>
-            <p class="infos_film">Gains : <span id="gains"></span> €</p>
+            <p class="infos_film">Budget : <span id="budget"></span></p>
+            <p class="infos_film">Gains : <span id="gains"></span></p>
             <p class="infos_film">Popularité : <span id="popularite"></span></p>
-            <p class="infos_film">Note : <span id="note"></span>/10</p>
+            <p class="infos_film">Note : <span id="note"></span></p>
             <p class="infos_film">Nombre de votes : <span id="nombreVotes"></span></p>
             <p class="infos_film">Date de sortie : <span id="dateSortie"></span></p>
-            <p class="infos_film">Durée : <span id="duree"></span> minutes</p>
+            <p class="infos_film">Durée : <span id="duree"></span></p>
             <p class="infos_film">Site Officiel : <span id="siteOfficiel"></span></p>
         </div>
 
 
-        <div class="ctner_img_film" id="ctner_img_film_arriere">
-            <img class="img_film" id="img_film_arriere" onerror="this.src = 'no_img_found.png'">
+        <div id="ctner_img_film">
+            <img class="img_film" id="img_film_arriere" onerror="this.src = 'no_img_found_1.png'">
         </div>
         
 
